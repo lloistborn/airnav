@@ -44,7 +44,7 @@
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
             <?php if($this->session->userdata("logged_in")): ?>
-                <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <a href="<?php echo base_url(); ?>auth/logout/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             <?php endif; ?>
             </li>
         </ul>
@@ -54,7 +54,19 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <?php if($this->uri->segment(1) == "admin"): ?>
+                            <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard fa-fw"></i> Data Maskapai</a>
+                            <a href="<?php echo base_url('admin/alternatif'); ?>"><i class="fa fa-line-chart "></i> Alternatif</a>
+                            <a href="<?php echo base_url('admin/user'); ?>"><i class="fa fa-users "></i> User</a>
+                        <?php endif; ?>
+                        
+                        <?php if($this->uri->segment(1) == "maskapai"): ?>
+                            <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard fa-fw"></i> Data Alternatif Harga</a>
+                        <?php endif; ?>
+
+                        <?php if($this->uri->segment(1) == "manager"): ?>
+                            <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard fa-fw"></i> Laporan ALternatif Harga</a>
+                        <?php endif; ?>                        
                     </li>
                 </ul>
             </div>
