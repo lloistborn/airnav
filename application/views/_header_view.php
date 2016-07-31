@@ -37,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Air Nav</a>
+            <a class="navbar-brand" href="<?php echo base_url().$this->uri->segment(1); ?>">Air Nav</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -61,11 +61,11 @@
                         <?php endif; ?>
                         
                         <?php if($this->uri->segment(1) == "maskapai"): ?>
-                            <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard fa-fw"></i> Data Alternatif Harga</a>
+                            <a href="<?php echo base_url().$this->uri->segment(1); ?>"><i class="fa fa-dashboard fa-fw"></i> Data Alternatif Harga</a>
                         <?php endif; ?>
 
                         <?php if($this->uri->segment(1) == "manager"): ?>
-                            <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard fa-fw"></i> Laporan ALternatif Harga</a>
+                            <a href="<?php echo base_url().$this->uri->segment(1); ?>"><i class="fa fa-dashboard fa-fw"></i> Laporan ALternatif Harga</a>
                         <?php endif; ?>                        
                     </li>
                 </ul>

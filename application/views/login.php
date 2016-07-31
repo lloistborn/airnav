@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Air Nav</a>
+                <a class="navbar-brand" href="<?php echo base_url().$this->uri->segment(1); ?>"">Air Nav</a>
             </div>
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -76,6 +76,11 @@
                             </fieldset>
                         </form>
                     </div>
+                    <?php if($this->session->flashdata('msg')): ?>
+                        <div class="panel-footer">
+                            <p>username/password salah</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

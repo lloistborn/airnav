@@ -42,6 +42,10 @@ class Auth extends CI_Controller {
 						break;
 				}
 			}
+			else {
+				$this->session->set_flashdata("msg", "username/password salah");
+				redirect();
+			}
 		}catch(Exception $e){
 			echo $e;
 		}
