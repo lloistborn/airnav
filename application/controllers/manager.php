@@ -24,7 +24,7 @@ class Manager extends CI_Controller {
 
 			$crud->set_theme('datatables');
 			$crud->set_table('data_maskapai');
-			$crud->set_subject('Harga');
+			$crud->set_subject('Data');
 			$crud->required_fields('id');
 			$crud->columns('kategori_tarif', 'faktor_berat', 'faktor_jarak', 'unit_rate_flight_dom', 'unit_rate_flight_int', 'alokasi', 'harga');
 

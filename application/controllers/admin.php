@@ -38,9 +38,16 @@ class Admin extends CI_Controller {
 
 			$crud->set_theme('datatables');
 			$crud->set_table('data_maskapai');
-			$crud->set_subject('Harga');
+			$crud->set_subject('Data');
 			$crud->required_fields('id');
-			$crud->columns('kategori_tarif', 'faktor_berat', 'faktor_jarak', 'unit_rate_flight_dom', 'unit_rate_flight_int', 'alokasi');
+			$crud->columns('nama_pesawat', 'kategori_tarif', 'faktor_berat', 'faktor_jarak', 'unit_rate_flight_dom', 'unit_rate_flight_int', 'alokasi');
+
+			/* sent to post_array on function log_pesawat */
+			$crud->change_field_type('nama_pesawat','visible');
+			$crud->change_field_type('kategori_tarif','visible');
+
+			$crud->callback_after_insert(array($this, 'log_pesawat_after_insert'));
+			$crud->callback_after_update(array($this, 'log_pesawat_after_update'));
 
 			$output = $crud->render();
 
@@ -71,6 +78,23 @@ class Admin extends CI_Controller {
 		catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
+	}
+
+	function log_pesawat_after_insert($post_array)
+	{
+		$data = array("nama_pesawat" => $post_array["nama_pesawat"], "kategori_tarif" => $post_array["kategori_tarif"]);
+
+		$this->crud_model->insert("data_pesawat", $data);
+		 
+		return true;
+	}
+
+	function log_pesawat_after_update($post_array) {
+		$data = array("nama_pesawat" => $post_array["nama_pesawat"]);
+
+		$this->crud_model->edit_wherep("data_pesawat", $data, "kategori_tarif", $post_array["kategori_tarif"], $limit = true);
+
+		return true;
 	}
 
 	public function bubble_sort($saw_value) {
@@ -133,7 +157,7 @@ class Admin extends CI_Controller {
 
 			$crud->set_theme('datatables');
 			$crud->set_table('data_maskapai');
-			$crud->set_subject('Harga');
+			$crud->set_subject('Data');
 			$crud->required_fields('id');
 			$crud->columns('kategori_tarif', 'faktor_berat', 'faktor_jarak', 'unit_rate_flight_dom', 'unit_rate_flight_int', 'alokasi', 'bobot_saw', 'harga');
 
