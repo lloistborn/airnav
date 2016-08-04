@@ -37,7 +37,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo base_url().$this->uri->segment(1); ?>">Air Nav</a>
+            <a class="navbar-brand" href="<?php echo base_url().$this->uri->segment(1); ?>">
+                <img src="<?php echo base_url().'assets/logo/logo_airnav.jpg' ?>">
+            </a>
         </div>
         <!-- /.navbar-header -->
 
@@ -55,16 +57,19 @@
                 <ul class="nav" id="side-menu">
                     <li>
                         <?php if($this->uri->segment(1) == "admin"): ?>
+                            <img src="<?php echo base_url().'assets/foto_profil/admin.jpg' ?>">
                             <a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard fa-fw"></i> Data Maskapai</a>
                             <a href="<?php echo base_url('admin/alternatif'); ?>"><i class="fa fa-line-chart "></i> Alternatif</a>
                             <a href="<?php echo base_url('admin/user'); ?>"><i class="fa fa-users "></i> User</a>
                         <?php endif; ?>
                         
                         <?php if($this->uri->segment(1) == "maskapai"): ?>
+                            <img src="<?php echo base_url().'assets/foto_profil/maskapai.jpg' ?>">
                             <a href="<?php echo base_url().$this->uri->segment(1); ?>"><i class="fa fa-dashboard fa-fw"></i> Data Alternatif Harga</a>
                         <?php endif; ?>
 
                         <?php if($this->uri->segment(1) == "manager"): ?>
+                            <img src="<?php echo base_url().'assets/foto_profil/manager.jpg' ?>">
                             <a href="<?php echo base_url().$this->uri->segment(1); ?>"><i class="fa fa-dashboard fa-fw"></i> Laporan ALternatif Harga</a>
                         <?php endif; ?>                        
                     </li>
